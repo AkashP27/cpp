@@ -1,75 +1,95 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-class Queue{
+class Queue
+{
 
-    public:
-        int *arr;
-        int size;
-        int front;
-        int rear;
+public:
+    int *arr;
+    int size;
+    int front;
+    int rear;
 
-    Queue(int size){
+    Queue(int size)
+    {
         this->size = size;
         arr = new int[size];
         front = rear = 0;
     }
 
-    void enque(int element){
-        if(rear == size){
-            cout<<"Queue is Full"<<endl;
+    void enque(int element)
+    {
+        if (rear == size)
+        {
+            cout << "Queue is Full" << endl;
         }
-        else{
+        else
+        {
             arr[rear] = element;
             rear++;
         }
     }
 
-    void deque(){
-        if(front == rear){
-            cout<<"Queue is Empty"<<endl;
+    void deque()
+    {
+        if (front == rear)
+        {
+            cout << "Queue is Empty" << endl;
         }
-        else{
-            for(int i=0; i<rear-1; i++){
-                arr[i] = arr[i+1];
+        else
+        {
+            for (int i = 0; i < rear - 1; i++)
+            {
+                arr[i] = arr[i + 1];
             }
             rear--;
         }
     }
 
-    int frontElement(){
+    int frontElement()
+    {
         int ans = 0;
-        if (front == rear){
+        if (front == rear)
+        {
             cout << "Queue is Empty" << endl;
         }
-        else{
+        else
+        {
             ans = arr[front];
         }
         return ans;
     }
 
-    bool isEmpty(){
-        if (front == rear){
+    bool isEmpty()
+    {
+        if (front == rear)
+        {
             return true;
         }
-        else{
+        else
+        {
             return false;
         }
     }
 
-    void display(){
-        if (front == rear){
+    void display()
+    {
+        if (front == rear)
+        {
             cout << "Queue is Empty" << endl;
         }
-        else{
-            for (int i = front; i < rear; i++){
-                cout<< arr[i] << endl;
+        else
+        {
+            for (int i = front; i < rear; i++)
+            {
+                cout << arr[i] << endl;
             }
         }
     }
 };
 
-int main(){
+int main()
+{
 
     Queue q(5);
 
@@ -82,13 +102,15 @@ int main(){
     q.deque();
     q.deque();
 
-    cout<<"Front Element: "<<q.frontElement()<<endl;
+    cout << "Front Element: " << q.frontElement() << endl;
 
-    if(q.isEmpty()){
-        cout<<"Empty Queue"<<endl;
+    if (q.isEmpty())
+    {
+        cout << "Empty Queue" << endl;
     }
-    else{
-        cout<<"Not Empty"<<endl;
+    else
+    {
+        cout << "Not Empty" << endl;
     }
 
     q.display();
