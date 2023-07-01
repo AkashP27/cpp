@@ -43,6 +43,27 @@ public:
         }
     }
 
+    void popFront()
+    {
+        if (front == -1)
+        {
+            cout << "Queue is Empty" << endl;
+        }
+
+        if (front == rear)
+        {
+            front = rear = -1;
+        }
+        else if (front == size - 1)
+        {
+            front = 0;
+        }
+        else
+        {
+            front++;
+        }
+    }
+
     void display()
     {
         if (front == -1)
@@ -76,6 +97,8 @@ int main()
     q.pushFront(1);
     q.pushFront(3);
     q.pushFront(5);
+
+    q.popFront();
 
     q.display();
 
