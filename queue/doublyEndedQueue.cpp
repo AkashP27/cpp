@@ -46,22 +46,16 @@ public:
     void popFront()
     {
         if (front == -1)
-        {
             cout << "Queue is Empty" << endl;
-        }
 
         if (front == rear)
-        {
             front = rear = -1;
-        }
+
         else if (front == size - 1)
-        {
             front = 0;
-        }
+
         else
-        {
             front++;
-        }
     }
 
     void display()
