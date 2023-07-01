@@ -113,10 +113,10 @@ int main()
   Node *tail = NULL;
 
   insertNode(tail, 5, 3);
-  // insertNode(tail, 5, 7);
-  // insertNode(tail, 7, 9);
-  // insertNode(tail, 9, 11);
-  // insertNode(tail, 11, 10);
+  insertNode(tail, 5, 7);
+  insertNode(tail, 7, 9);
+  insertNode(tail, 9, 11);
+  insertNode(tail, 11, 10);
 
   print(tail);
 
