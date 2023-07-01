@@ -58,6 +58,46 @@ public:
             front++;
     }
 
+    void pushBack(int element)
+    {
+        if ((front == 0 && rear == size - 1) || rear == (front - 1) % (size - 1))
+        {
+            cout << "Queue is Full" << endl;
+            return;
+        }
+        // To insert first element
+        else if (front == -1)
+        {
+            front = rear = 0;
+            arr[rear] = element;
+        }
+        else if (rear == size - 1 && front != 0)
+        {
+            rear = 0;
+            arr[rear] = element;
+        }
+        else
+        {
+            rear++;
+            arr[rear] = element;
+        }
+    }
+
+    void popBack()
+    {
+        if (front == -1)
+            cout << "Queue is Empty" << endl;
+
+        if (front == rear)
+            front = rear = -1;
+
+        else if (rear == 0)
+            rear = size - 1;
+
+        else
+            rear--;
+    }
+
     void display()
     {
         if (front == -1)
@@ -89,10 +129,13 @@ int main()
     DoublyQueue q(5);
 
     q.pushFront(1);
+    q.pushBack(2);
     q.pushFront(3);
+    q.pushBack(4);
     q.pushFront(5);
 
     q.popFront();
+    q.popBack();
 
     q.display();
 
