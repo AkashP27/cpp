@@ -42,6 +42,32 @@ public:
         }
     }
 
+    int deque()
+    {
+        if (front == -1)
+        {
+            cout << "Queue is Empty" << endl;
+            return -1;
+        }
+
+        int ans = arr[front];
+        arr[front] = -1;
+
+        if (front == rear)
+        {
+            front = rear = -1;
+        }
+        else if (front == size - 1)
+        {
+            front = 0;
+        }
+        else
+        {
+            front++;
+        }
+        return ans;
+    }
+
     void display()
     {
         if (front == -1)
@@ -78,6 +104,9 @@ int main()
     q.enque(3);
     q.enque(4);
     q.enque(5);
+
+    q.deque();
+    q.deque();
 
     q.display();
 
