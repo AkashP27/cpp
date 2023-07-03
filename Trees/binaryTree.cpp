@@ -36,12 +36,25 @@ Node *createTree(Node *root)
     return root;
 }
 
+void inOrder(Node *root)
+{
+    if (root == NULL)
+        return;
+
+    inOrder(root->left);
+    cout << root->data << " ";
+    inOrder(root->right);
+}
+
 int main()
 {
 
     Node *root = NULL;
-
     root = createTree(root);
+
+    cout << endl
+         << "Inorder traversal: ";
+    inOrder(root);
 
     return 0;
 }
