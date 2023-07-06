@@ -102,6 +102,38 @@ void levelOrderTraversal(Node *root)
     }
 }
 
+void morrisInorderTraversal(Node *root)
+{
+    Node *current = root;
+    while (current != NULL)
+    {
+        if (current->left == NULL)
+        {
+            cout << current->data << " ";
+            current = current->right;
+        }
+        else
+        {
+            Node *predecessor = current->left;
+            while (predecessor->right != NULL && predecessor->right != current)
+            {
+                predecessor = predecessor->right;
+            }
+            if (predecessor->right == NULL)
+            {
+                predecessor->right = current;
+                current = current->left;
+            }
+            else
+            {
+                predecessor->right = NULL;
+                cout << current->data << " ";
+                current = current->right;
+            }
+        }
+    }
+}
+
 void inOrder(Node *root)
 {
     if (root == NULL)
@@ -220,6 +252,10 @@ int main()
     // 1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1
     cout << "Level order traversal: " << endl;
     levelOrderTraversal(root);
+
+    cout << endl
+         << "Morris Inorder Traversal : ";
+    morrisInorderTraversal(root);
 
     cout << endl
          << "Inorder traversal: ";
