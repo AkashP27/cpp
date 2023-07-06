@@ -154,6 +154,32 @@ void preorderTraversal(Node *root)
     }
 }
 
+void inorderTraversal(Node *root)
+{
+    // if (root == NULL)
+    //     return;
+
+    stack<Node *> s;
+    Node *node = root;
+
+    while (true)
+    {
+        if (node != NULL)
+        {
+            s.push(node);
+            node = node->left;
+        }
+        else
+        {
+            if (s.empty())
+                break;
+            node = s.top();
+            s.pop();
+            cout << node->data << " ";
+            node = node->right;
+        }
+    }
+}
 int main()
 {
 
@@ -181,6 +207,10 @@ int main()
     cout << endl
          << "Iterative Preorder traversal: ";
     preorderTraversal(root);
+
+    cout << endl
+         << "Iterative Inorder traversal: ";
+    inorderTraversal(root);
 
     return 0;
 }
