@@ -132,13 +132,35 @@ void postOrder(Node *root)
     cout << root->data << " ";
 }
 
+void preorderTraversal(Node *root)
+{
+    if (root == NULL)
+        return;
+
+    stack<Node *> s;
+    s.push(root);
+
+    while (!s.empty())
+    {
+        root = s.top();
+        s.pop();
+
+        cout << root->data << " ";
+        if (root->right)
+            s.push(root->right);
+
+        if (root->left)
+            s.push(root->left);
+    }
+}
+
 int main()
 {
 
     Node *root = NULL;
 
-    createTreeLevelOrder(root);
-    // root = createTree(root);
+    // createTreeLevelOrder(root);
+    root = createTree(root);
 
     // 1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1
     cout << "Level order traversal: " << endl;
@@ -155,6 +177,10 @@ int main()
     cout << endl
          << "Postorder traversal: ";
     postOrder(root);
+
+    cout << endl
+         << "Iterative Preorder traversal: ";
+    preorderTraversal(root);
 
     return 0;
 }
