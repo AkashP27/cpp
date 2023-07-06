@@ -180,6 +180,35 @@ void inorderTraversal(Node *root)
         }
     }
 }
+
+void postorderTraversal(Node *root)
+{
+    if (root == NULL)
+        return;
+
+    stack<Node *> s1, s2;
+    s1.push(root);
+
+    while (!s1.empty())
+    {
+        root = s1.top();
+        s1.pop();
+        s2.push(root);
+
+        if (root->left)
+            s1.push(root->left);
+
+        if (root->right)
+            s1.push(root->right);
+    }
+
+    while (!s2.empty())
+    {
+        cout << s2.top()->data << " ";
+        s2.pop();
+    }
+}
+
 int main()
 {
 
@@ -211,6 +240,10 @@ int main()
     cout << endl
          << "Iterative Inorder traversal: ";
     inorderTraversal(root);
+
+    cout << endl
+         << "Iterative Postorder traversal: ";
+    postorderTraversal(root);
 
     return 0;
 }
