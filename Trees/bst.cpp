@@ -44,12 +44,47 @@ void takeInput(Node *&root)
     }
 }
 
+void levelOrderTraversal(Node *root)
+{
+    queue<Node *> q;
+    q.push(root);
+    q.push(NULL);
+
+    while (!q.empty())
+    {
+        Node *temp = q.front();
+        q.pop();
+
+        if (temp == NULL)
+        {
+            cout << endl;
+            if (!q.empty())
+                q.push(NULL);
+        }
+        else
+        {
+            cout << temp->data << " ";
+
+            if (temp->left)
+                q.push(temp->left);
+
+            if (temp->right)
+                q.push(temp->right);
+        }
+    }
+}
+
 int main()
 {
     Node *root = NULL;
 
     cout << "Enter data to create BST:" << endl;
     takeInput(root);
+
+    // 40 30 50 25 35 45 60 -1
+
+    cout << "LevelOrder of BST:" << endl;
+    levelOrderTraversal(root);
 
     return 0;
 }
