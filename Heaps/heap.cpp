@@ -32,6 +32,33 @@ public:
         }
     }
 
+    void deleteFromHeap()
+    {
+        arr[1] = arr[size];
+        size--;
+
+        int index = 1;
+        while (index < size)
+        {
+            int leftChildIndex = 2 * index;
+            int rightChildIndex = 2 * index + 1;
+
+            if (leftChildIndex < size && arr[index] < arr[leftChildIndex])
+            {
+                swap(arr[index], arr[leftChildIndex]);
+                index = leftChildIndex;
+            }
+
+            else if (rightChildIndex < size && arr[index] < arr[rightChildIndex])
+            {
+                swap(arr[index], arr[rightChildIndex]);
+                index = rightChildIndex;
+            }
+            else
+                return;
+        }
+    }
+
     void print()
     {
         for (int i = 1; i <= size; i++)
@@ -51,6 +78,9 @@ int main()
     h.insert(52);
     h.insert(54);
 
+    h.print();
+
+    h.deleteFromHeap();
     h.print();
 
     return 0;
